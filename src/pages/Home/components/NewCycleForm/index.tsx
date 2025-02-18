@@ -9,7 +9,7 @@ export function NewCycleForm() {
 
   return (
     <FormContainer>
-      <label htmlFor="task">I will work with louran on</label>
+      <label htmlFor="task">I will work on</label>
       <TaskInput
         id="task"
         list="task-suggestions"

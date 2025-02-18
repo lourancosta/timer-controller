@@ -7,11 +7,11 @@ export const HeaderContainer = styled.header`
 
   nav {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 
     a {
-      width: 3rem;
-      height: 3rem;
+      width: 2rem;
+      height: 2rem;
 
       display: flex;
       justify-content: center;
