@@ -1,6 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, ReactNode, useReducer, useState } from "react";
-import { Cycle, cyclesReducer, ActionTypes } from "../reducers/cycles";
+import { Cycle, cyclesReducer } from "../reducers/cycles/reducer";
+import {
+  addNewCycleAction,
+  markCurrentCycleAsFinishedAction,
+  stopCurrentCycleAction,
+} from "../reducers/cycles/actions";
 
 interface CreateCycleData {
   task: string;
@@ -35,19 +40,6 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
   const { cycles, activeCycleId } = cyclesState;
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
-  function markCurrentCycleAsFinished() {
-    dispatch({
-      type: ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED,
-      payload: {
-        activeCycleId,
-      },
-    });
-  }
-
-  function setSecondsPassed(seconds: number) {
-    setAmountSecondsPassed(seconds);
-  }
-
   function createNewCycle(data: CreateCycleData) {
     const newCycle: Cycle = {
       id: String(new Date().getTime()),
@@ -56,23 +48,20 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
       startDate: new Date(),
     };
 
-    dispatch({
-      type: ActionTypes.ADD_NEW_CYCLE,
-      payload: {
-        newCycle,
-      },
-    });
-
+    dispatch(addNewCycleAction(newCycle));
     setAmountSecondsPassed(0);
   }
 
+  function markCurrentCycleAsFinished() {
+    dispatch(markCurrentCycleAsFinishedAction());
+  }
+
+  function setSecondsPassed(seconds: number) {
+    setAmountSecondsPassed(seconds);
+  }
+
   function stopCurrentCycle() {
-    dispatch({
-      type: ActionTypes.INTERRUPT_CURRENT_CYCLE,
-      payload: {
-        activeCycleId,
-      },
-    });
+    dispatch(stopCurrentCycleAction());
   }
 
   return (
