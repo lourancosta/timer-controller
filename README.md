@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Task Timer Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Task Timer Application is a minimalistic and intuitive productivity tool designed to help users track their work sessions. The app allows users to set a timer for a specific task, start and stop the countdown, and review their work history to track progress over time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Task-based Time Tracking**: Enter the task name and specify the duration for focused work.
+- **Countdown Timer**: A digital timer that visually represents the remaining time.
+- **Start/Stop Functionality**: Users can start and stop the timer at any point.
+- **Task History Tracking**: Keeps a log of completed and in-progress tasks with timestamps and statuses.
+- **Dark Mode UI**: A sleek, modern, and minimalistic interface optimized for comfortable viewing.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Screenshots
 
-- Configure the top-level `parserOptions` property like this:
+### Timer Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![Timer Setup](./src/assets/screenshot/home.png)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Active Timer
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+![Active Timer](./src/assets/screenshot/home2.png)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Task History
+
+![Task History](./src/assets/screenshot/history.png)
+
+## Installation
+
+To run the application locally, follow these steps:
+
+## Usage
+
+1. Enter the task name and duration.
+2. Click the **Start** button to begin the timer.
+3. The countdown timer will run until completion or until stopped manually.
+4. Completed and stopped tasks will be recorded in the **Task History** section.
+
+## Technologies Used
+
+- **TypeScript** – For type-safe development.
+- **Vite** – For fast development and optimized builds.
+- **React.js** – For building the interactive UI.
+- **Node.js** – Backend for data handling (if applicable).
+- **Styled Components** – For UI design.
