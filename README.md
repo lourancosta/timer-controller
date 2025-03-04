@@ -26,9 +26,6 @@ The Task Timer Application is a minimalistic and intuitive productivity tool des
 
 ![Task History](./src/assets/screenshot/history.png)
 
-## Installation
-
-To run the application locally, follow these steps:
 
 ## Usage
 
