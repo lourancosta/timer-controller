@@ -4,29 +4,23 @@ import { differenceInSeconds } from "date-fns";
 import { CyclesContext } from "../../../../contexts/CyclesContext";
 
 export function Countdown() {
-  const {
-    activeCycle,
-    activeCycleId,
-    amountSecondsPassed,
-    markCurrentCycleAsFinished,
-    setToNullActiveCycleId,
-    setSecondsPassed,
-  } = useContext(CyclesContext);
+  const { activeCycle, activeCycleId, amountSecondsPassed, markCurrentCycleAsFinished, setSecondsPassed } =
+    useContext(CyclesContext);
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0;
 
   useEffect(() => {
-    let interval: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let interval: number | any;
 
     if (activeCycle) {
       interval = setInterval(() => {
-        const secondsDifference = differenceInSeconds(new Date(), activeCycle.startDate);
+        const secondsDifference = differenceInSeconds(new Date(), new Date(activeCycle.startDate));
 
         if (secondsDifference >= totalSeconds) {
           markCurrentCycleAsFinished();
           setSecondsPassed(totalSeconds);
           clearInterval(interval);
-          setToNullActiveCycleId();
         } else {
           setSecondsPassed(secondsDifference);
         }
@@ -36,7 +30,7 @@ export function Countdown() {
     return () => {
       clearInterval(interval);
     };
-  }, [activeCycle, totalSeconds, activeCycleId, markCurrentCycleAsFinished, setToNullActiveCycleId, setSecondsPassed]);
+  }, [activeCycle, totalSeconds, activeCycleId, markCurrentCycleAsFinished, setSecondsPassed]);
 
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0;
 
